@@ -29,8 +29,9 @@
                         <button type="submit" class="edit" data-tooltip="Editar"><img class="logo" src="../../static/img/edit.png" alt=""></button>
                         <input type="hidden" name="id" id="" value="{{ p['id'] }}">
                     </form>
-                    <form action="/products/delete/{{ p['id'] }}" method="GET">
-                        <button type="submit" class="delete" data-tooltip="Eliminar"><img class="logo" src="../../static/img/delete.png" alt=""></button>
+                    <form action="/products/delete/{{ p['id'] }}" method="POST"  onsubmit="return confirm('¿Estás seguro de que deseas eliminar este producto?')">
+                        {{ deleteForm.csrf_token }}
+                        <p>{{ deleteForm.submit(value="Eliminar", class="delete") }}</p>
                         <input type="hidden" name="id" id="" value="{{ p['id'] }}">
                     </form>
                 </div>
