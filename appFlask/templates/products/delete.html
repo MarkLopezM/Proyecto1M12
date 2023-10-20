@@ -19,6 +19,7 @@
             <h3> Precio: {{info['price']}}€</h3>
             <div class="botones">
                 <form action="/products/delete/{{ info['id'] }}" method="POST">
+                    {{ form.csrf_token }}
                     <button type="submit" class="delete" data-tooltip="Eliminar Producto"><img class="logo" src="../../static/img/delete.png" alt=""></button>
                     <input type="hidden" name="id" id="" value="{{ info['id'] }}">
                     <input type="hidden" name="foto" id="" value="{{info['photo']}}">

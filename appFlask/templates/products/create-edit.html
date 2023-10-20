@@ -9,46 +9,27 @@
 <body>
     {% if not info %}
     <form method="POST" action="/products/create" class="formulario" enctype="multipart/form-data">
+        {{ form.csrf_token }}
         <fieldset>
             <legend><b>Crear nuevo producto</b></legend>
         <div class="container">
-            <div class="inpContainer">
-                <label for="nom">Nombre</label>
-                <input type="text" id="nombre" name="nombre" class="wide" placeholder="Nombre" required>
-            </div>
-            <div class="inpContainer">
-                <label for="descripcion">Descripción</label>
-                <input type="text" id="descripcion" name="descripcion" class="wide" placeholder="Añade aquí la descripción del producto" required>
-            
-            </div>
-            <div class="inpContainer">
-                <label for="foto">Foto</label>
-                <input type="file" id="foto" name="foto" class="wide" required>
-            
-            </div>
-            <div class="inpContainer">
-                <label for="precio">Precio en euros</label>
-                <input type="text" id="precio" name="precio" class="wide" placeholder="00,00" required>
-            </div>
-            <div class="inpContainer">
-                <label for="categoria">Categorías</label>
-                <select id="categoria" name="categoria"  class="wide" required>
-                    {% for x in cat %}
-                    <option value="{{x['id']}}">{{ x['name'] }}</option>
-                    {% endfor %}
-                </select>
-            </div>
+            <p>{{ form.title.label }}: {{ form.title() }}</p>
+            <p>{{ form.description.label }}: {{ form.description() }}</p>
+            <p>{{ form.photo.label }}: {{ form.photo() }}</p>
+            <p>{{ form.price.label }}: {{ form.price() }}</p>
+            <p>{{ form.category_id.label }}: {{ form.category_id() }}</p>
             <br>
             <br>
             </fieldset>
             <div class="Botones">
                 <input type="reset" value="Vaciar Campos" class="rese">
-                <input type="submit" value="Añadir Producto" class="subm">
+                <p class="subm">{{ form.submit(value="Añadir producto") }}</p>
             </div>
         </div>
     </form>
     {% else %}
-    <form method="POST" action="/products/edit/{{ info['id'] }}" class="formulario">
+    <form method="POST" action="/products/edit/{{ info['id'] }}" class="formulario" enctype="multipart/form-data">
+        {{ form.csrf_token }}
         <fieldset>
             <legend><b>Editar producto</b></legend>
         <div class="container">

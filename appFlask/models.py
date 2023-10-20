@@ -12,7 +12,7 @@ class Product(db.Model):
     photo = db.Column(db.Text)
     price = db.Column(db.DECIMAL(10, 2), nullable=False)
     category_id = db.Column(db.Integer, db.ForeignKey('categories.id'))
-    seller_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    seller_id = db.Column(db.Integer, db.ForeignKey('users.id'), default=1)
     created = db.Column(db.DATETIME, default=now, nullable=False)
     updated = db.Column(db.DATETIME, default=now(), onupdate=now(), nullable=False)
 
