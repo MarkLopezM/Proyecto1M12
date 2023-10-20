@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../static/css/list.css">
+    <title>Items</title>
+</head>
+<body>
+    <a href="/products/create"><h1>+ Crear nuevo item +</h1></a>
+    <main>
+        {% for p in items %}
+        <div class="tarjeta">
+            <div class="arriba">
+                <img src="../../static/img/uploads/{{ p['photo'] }}" class="imgTar">
+            </div>
+            <div class="abajo">
+                <h2> {{ p['id']}}. {{ p['title']}} </h2>
+                <h3> Precio: {{p['price']}}€</h3>
+                <div class="botones">
+                    <form action="/products/read/{{ p['id'] }}" method="GET">
+                        <button type="submit" class="info" data-tooltip="Ver más"><img class="logo" src="../../static/img/informacion.png" alt=""></button>
+                        <input type="hidden" name="id" id="" value="{{ p['id'] }}">
+                    </form>
+                    <form action="/products/edit/{{ p['id'] }}" method="GET">
+                        <button type="submit" class="edit" data-tooltip="Editar"><img class="logo" src="../../static/img/edit.png" alt=""></button>
+                        <input type="hidden" name="id" id="" value="{{ p['id'] }}">
+                    </form>
+                    <form action="/products/delete/{{ p['id'] }}" method="GET">
+                        <button type="submit" class="delete" data-tooltip="Eliminar"><img class="logo" src="../../static/img/delete.png" alt=""></button>
+                        <input type="hidden" name="id" id="" value="{{ p['id'] }}">
+                    </form>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </main>
+    <br>
+    <br>
+    <a href="/">Página principal</a>
+</body>
+</html>

@@ -1,0 +1,16 @@
+body{
+    
+    background-image: url(../img/fondo.png);
+    background-attachment: fixed;
+    background-position:initial;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.imgPr{
+    width: 28em;
+    height: 18em;
+    border: 0.41em solid black;
+    border-radius: 0.4em;
+    color: white;
+}
